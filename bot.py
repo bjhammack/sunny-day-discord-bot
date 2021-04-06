@@ -12,24 +12,6 @@ import time
 import traceback
 
 def main():
-    # Setting log file for this instance of the bot.
-    log_dir = 'logs/'
-    logs = glob.glob(log_dir+'bot*.log')
-    if len(logs) == 0:
-        new_log = 1
-    else:
-        try:
-            new_log = max([int(i.split('\\')[-1].split('_')[1][0]) for i in logs]) + 1
-        except:
-            new_log = 1
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.INFO)
-    f_handler = logging.FileHandler(f'logs/bot_{new_log}.log')
-    f_format = logging.Formatter('[%(asctime)s] - %(name)s - %(levelname)s - %(message)s')
-    f_handler.setFormatter(f_format)
-    logger.addHandler(f_handler)
-    keep_fds = [f_handler.stream.fileno()]
-
     # Initialzing a Spider() intance to get the data
     spider = Spider()
 
@@ -197,7 +179,30 @@ def main():
 
     bot.run(TOKEN)
 
+def prep_logger():
+    # Setting log file for this instance of the bot.
+    log_dir = 'logs/'
+    logs = glob.glob(log_dir+'bot*.log')
+    if len(logs) == 0:
+        new_log = 1
+    else:
+        try:
+            new_log = max([int(i.split('\\')[-1].split('_')[1][0]) for i in logs]) + 1
+        except:
+            new_log = 1
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.INFO)
+    f_handler = logging.FileHandler(f'logs/bot_{new_log}.log')
+    f_format = logging.Formatter('[%(asctime)s] - %(name)s - %(levelname)s - %(message)s')
+    f_handler.setFormatter(f_format)
+    logger.addHandler(f_handler)
+    keep_fds = [f_handler.stream.fileno()]
+
+    return keep_fds
+
 if __name__ == '__main__':
+    keep_fds = prep_logger()
+
     pid = '/tmp/sunny_day_botd.pid'
     daemon = Daemonize(app='sunny_day_botd', pid=pid, action=main, keep_fds=keep_fds)
     daemon.start()
