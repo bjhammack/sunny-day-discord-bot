@@ -1,0 +1,83 @@
+team_abbreviations = {
+			'Cubs':'CHC',
+			'White Sox':'CHW',
+			'Padres':'SDP',
+			'Dodgers':'LAD',
+			'Rockies':'COL',
+			'Diamondbacks':'ARI',
+			'D-backs':'ARI',
+			'Yankees':'NYY',
+			'Mets':'NYM',
+			'Braves':'ATL',
+			'Giants':'SFG',
+			'Orioles':'BAL',
+			'Red Sox':'BOS',
+			'Rays':'TBR',
+			'Blue Jays':'TOR',
+			'Indians':'CLE',
+			'Tigers':'DET',
+			'Royals':'KCR',
+			'Twins':'MIN',
+			'Astros':'HOU',
+			'Angels':'LAA',
+			'Athletics':'OAK',
+			'Mariners':'SEA',
+			'Rangers':'TEX',
+			'Marlins':'MIA',
+			'Phillies':'PHI',
+			'Nationals':'WAS',
+			'Reds':'CIN',
+			'Brewers':'MIL',
+			'Pirates':'PIT',
+			'Cardinals':'STL'
+		}
+
+get_scores_bad_text = ['Free Game of the Day','Watch Archive','Box','Wrap','Details','Watch Live','Gameday','Highlights','Tickets','Preview'\
+			,'SAN FRANCISCO','SEATTLE','BALTIMORE','BOSTON','NY METS'\
+			,'WASHINGTON','HOUSTON','OAKLAND','LA ANGELS','CHI WHITE SOX'\
+			,'MIAMI','TAMPA BAY','KANSAS CITY','TEXAS','CINCINNATI','ST. LOUIS'\
+			,'ARIZONA','SAN DIEGO','LA DODGERS','COLORADO','ATLANTA'\
+			,'PHILADELPHIA','CHI CUBS','PITTSBURGH','MINNESOTA','MILWAUKEE'\
+			,'DETROIT','CLEVELAND','NY YANKEES','TORONTO']
+
+matchup_dict = {
+				'state': '',
+				'home': '',
+				'away': '',
+				'home_wl': '',
+				'away_wl': '',
+				'rhe': '',
+				'home_rhe': '',
+				'away_rhe': '',
+				'pitching': '',
+				'pitcher': '',
+				'pitcher_stats': '',
+				'hitter': '',
+				'hitter_stats': '',
+				'count': '',
+				'home_sp': '',
+				'away_sp': '',
+				'home_sp_hand': '',
+				'away_sp_hand': '',
+				'home_sp_stats': '',
+				'away_sp_stats': '',
+				'w': '',
+				'w_stats': '',
+				'l': '',
+				'l_stats': '',
+				's': '',
+				's_count': '',
+				'due_team': '',
+				'due_1': '',
+				'due_2': '',
+				'due_3': '',
+				'due_1_stats': '',
+				'due_2_stats': '',
+				'due_3_stats': '',
+				'w_text': '',
+				'l_text': '',
+				's_text': '',
+				'due_text': '',
+				'pitching_text': '',
+				'at_bat_text': ''
+				}
