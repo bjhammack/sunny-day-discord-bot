@@ -4,6 +4,7 @@ import datetime as dt
 import discord
 from discord.ext import commands, tasks
 from dotenv import load_dotenv
+from functools import partial
 import glob
 import logging
 import os
