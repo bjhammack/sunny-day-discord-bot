@@ -11,7 +11,7 @@ import random
 import time
 import traceback
 
-def main():
+def main(logger):
     # Initialzing a Spider() intance to get the data
     spider = Spider()
 
@@ -198,11 +198,11 @@ def prep_logger():
     logger.addHandler(f_handler)
     keep_fds = [f_handler.stream.fileno()]
 
-    return keep_fds
+    return logger, keep_fds
 
 if __name__ == '__main__':
-    keep_fds = prep_logger()
-
-    pid = '/tmp/sunny_day_botd.pid'
-    daemon = Daemonize(app='sunny_day_botd', pid=pid, action=main, keep_fds=keep_fds)
-    daemon.start()
+    logger, keep_fds = prep_logger()
+    main(logger)
+    #pid = '/tmp/sunny_day_botd.pid'
+    #daemon = Daemonize(app='sunny_day_botd', pid=pid, action=main, keep_fds=keep_fds)
+    #daemon.start()
