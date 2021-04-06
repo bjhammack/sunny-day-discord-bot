@@ -10,6 +10,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 import time
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.utils import ChromeType
 
 class Spider:
 	def __init__(self):
@@ -383,6 +384,6 @@ __{team['team']}__
 		#options.add_argument('--incognito')
 		options.add_argument('--headless')
 		options.add_argument("--log-level=3")
-		driver = webdriver.Chrome(ChromeDriverManager().install(),options=options)
+		driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(),options=options)
 
 		return driver
