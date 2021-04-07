@@ -379,13 +379,15 @@ __{team['team']}__
 
 		Returns: selenium driver for webscraping
 		'''
-		options = webdriver.ChromeOptions()
+		#options = webdriver.ChromeOptions()
+		options = webdriver.chrome.options.Options()
 		#options.add_argument('--ignore-certificate-errors')
 		#options.add_argument('--incognito')
 		options.add_argument('--headless')
 		options.add_argument("--log-level=3")
 		options.add_argument("--remote-debugging-port=9222")
 		options.add_argument('--no_sandbox')
+		options.add_argument('--disable-extensions')
 		# Deprecated version of creating the driver. This is the preferred approach, but does not work with 32-bit linux OS's
 		driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(),options=options)
 		#driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver', options=options)
