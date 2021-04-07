@@ -1,5 +1,5 @@
 # Sunny Day Discord Bot
-Baseball Discord bot that can post up-to-date scores, lineups, and home runs.
+Baseball Discord bot that can post up-to-date scores, lineups, and home runs. Uses webscraping techniques to scrape baseball data from various websites in real time to respond to commands.
 
 ## Overview
 This bot has three primary functionalities: retrieving scores, lineups, and home runs.
