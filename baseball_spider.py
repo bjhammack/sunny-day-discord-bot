@@ -389,7 +389,7 @@ __{team['team']}__
 		options.add_argument('--no_sandbox')
 		options.add_argument('--disable-extensions')
 		# Deprecated version of creating the driver. This is the preferred approach, but does not work with 32-bit linux OS's
-		driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(),options=options)
-		#driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver', options=options)
+		#driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(),options=options)
+		driver = webdriver.Chrome('/snap/bin/chromium.chromedriver', options=options)
 		
 		return driver
