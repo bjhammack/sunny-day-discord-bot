@@ -1,10 +1,10 @@
 from baseball_spider import Spider
-from daemonize import Daemonize
+#from daemonize import Daemonize
 import datetime as dt
 import discord
 from discord.ext import commands, tasks
 from dotenv import load_dotenv
-from functools import partial
+#from functools import partial
 import glob
 import logging
 import os
@@ -159,21 +159,21 @@ def main(logger):
                 error = traceback.format_exc()
                 logger.error(error)
 
-        # @scheduled_lineups.before_loop
-        # async def before():
-        #     '''
-        #     Wait to begin the scheduled lineup posts until the top of the hour.
-        #     '''
-        #     try:
-        #         start_time  = dt.datetime.now() + dt.timedelta(hours=1)
-        #         start_time = dt.datetime(start_time.year, start_time.month,start_time.day,start_time.hour,0,0)
-        #         td = start_time - dt.datetime.now()
-        #         logger.info(f'Waiting to begin scheduled lineups/scores loops for {td.seconds} seconds.')
-        #         time.sleep(td.seconds)
-        #         await bot.wait_until_ready()
-        #     except:
-        #         error = traceback.format_exc()
-        #         logger.error(error)
+        @scheduled_lineups.before_loop
+        async def before():
+            '''
+            Wait to begin the scheduled lineup posts until the top of the hour.
+            '''
+            try:
+                start_time  = dt.datetime.now() + dt.timedelta(hours=1)
+                start_time = dt.datetime(start_time.year, start_time.month,start_time.day,start_time.hour,0,0)
+                td = start_time - dt.datetime.now()
+                logger.info(f'Waiting to begin scheduled lineups/scores loops for {td.seconds} seconds.')
+                time.sleep(td.seconds)
+                await bot.wait_until_ready()
+            except:
+                error = traceback.format_exc()
+                logger.error(error)
 
         scheduled_lineups.start()
         scheduled_scores.start()

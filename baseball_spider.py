@@ -385,7 +385,7 @@ __{team['team']}__
 		options.add_argument('--headless')
 		options.add_argument("--log-level=3")
 		# Deprecated version of creating the driver. This is the preferred approach, but does not work with 32-bit linux OS's
-		#driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(),options=options)
-		driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver', options=options)
+		driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(),options=options)
+		#driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver', options=options)
 		
 		return driver
