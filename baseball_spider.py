@@ -6,7 +6,6 @@ import numpy as np
 import os
 import pandas as pd
 from pandas.plotting import table
-from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 import time
@@ -380,8 +379,6 @@ __{team['team']}__
 
 		Returns: selenium driver for webscraping
 		'''
-		display = Display(visible=0, size=(800, 600))
-		display.start()
 		#options = webdriver.ChromeOptions()
 		options = webdriver.chrome.options.Options()
 		#options.add_argument('--ignore-certificate-errors')
