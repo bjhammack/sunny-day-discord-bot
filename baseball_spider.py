@@ -5,9 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 import pandas as pd
-from pandas.plotting import table
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
 import time
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.utils import ChromeType
@@ -20,9 +18,15 @@ class Spider:
 		self.team_abbrevs = bsv.team_abbreviations
 
 	def _update_today(self):
+		'''
+		Updates self.today to the current day whenever a day-sensitve process is run
+		'''
 		self.today = dt.date.today()
 	
 	def get_lineups(self, date=None):
+		'''
+		Webscrapes the lineups for a specified date; returns a list of dictionaries
+		'''
 		self._update_today()
 		if not date:
 			date = self.today
@@ -71,6 +75,9 @@ class Spider:
 		return matchups
 
 	def get_team_lineup(self, team_name):
+		'''
+		Gathers all lineups then returns the one with the correct corresponding team name
+		'''
 		matchups = self.get_lineups()
 
 		team = {}
@@ -93,6 +100,9 @@ class Spider:
 		return team
 
 	def format_team_lineup(self, team_name=None):
+		'''
+		Returns string of a single teams lineup
+		'''
 		if not team_name:
 			return 'Please enter a valid team name.'
 		team = self.get_team_lineup(team_name)
@@ -115,6 +125,9 @@ __{team['team']}__
 '''
 
 	def get_scores(self, date=None):
+		'''
+		Webscrapes scores for all games on a given date. Returns list of dictionaries.
+		'''
 		bad_text = bsv.get_scores_bad_text + [v for k,v in self.team_abbrevs.items() if v != 'PIT']
 		
 		self._update_today()
@@ -241,6 +254,9 @@ __{team['team']}__
 		return scores
 
 	def get_team_score(self, team):
+		'''
+		Webscrapes all scores, then filters for the inputted team.
+		'''
 		scores = self.get_scores()
 		abbrv = {v:k for k,v in self.team_abbrevs.items()}
 		score = ''
@@ -251,6 +267,9 @@ __{team['team']}__
 		return score
 
 	def generate_lineup_images(self):
+		'''
+		Generates .png images of matplotlib tables displaying the lineup data
+		'''
 		self._empty_lineups()
 		matchups = self.get_lineups()
 
@@ -268,6 +287,9 @@ __{team['team']}__
 			plt.close(fig)
 
 	def generate_score_images(self):
+		'''
+		Generates .png images of matplotlib tables displaying the score data
+		'''
 		self._empty_scores()
 		matchups = self.get_scores()
 
@@ -294,6 +316,9 @@ __{team['team']}__
 			plt.close(fig)
 
 	def generate_team_score_image(self, team):
+		'''
+		Generates .png image of matplotlib table displaying the score data for the inputted team
+		'''
 		self._empty_scores()
 		matchups = self.get_scores()
 		abbrvs = {v:k for k,v in self.team_abbrevs.items()}
@@ -322,6 +347,9 @@ __{team['team']}__
 			plt.close(fig)
 
 	def get_homers(self):
+		'''
+		Gets 5 most recent home runs, IDs which ones havent been posted yet, then returns list of strings of new homers.
+		'''
 		self.driver.get('https://twitter.com/DingerTracker')
 		time.sleep(5)
 		spans = self.driver.find_elements_by_tag_name('span')
@@ -345,6 +373,9 @@ __{team['team']}__
 						header_color='w', row_colors=['w', 'w'], edge_color='w',
 						bbox=[0, 0, 1, 1], header_columns=0,
 						ax=None, **kwargs):
+		'''
+		Renders the matplotlib table figure and returns the figure.
+		'''
 		if ax is None:
 			size = (np.array(data.shape[::-1]) + np.array([0, 1])) * np.array([col_width, row_height])
 			fig, ax = plt.subplots(figsize=size)
@@ -356,8 +387,6 @@ __{team['team']}__
 		for k, cell in mpl_table._cells.items():
 			cell.set_edgecolor(edge_color)
 		if k[0] == 0 or k[1] < header_columns:
-			#cell.set_text_props(weight='bold', color='w')
-			#cell.set_facecolor(header_color)
 			placeholder = None
 		else:
 			cell.set_facecolor(row_colors[k[0]%len(row_colors) ])
@@ -365,10 +394,16 @@ __{team['team']}__
 		return ax.get_figure(), ax
 
 	def _empty_lineups(self):
+		'''
+		Empties lineups folder prior to new lineups being loaded.
+		'''
 		files = glob.glob('lineups/*')
 		for f in files:
 			os.remove(f)
 	def _empty_scores(self):
+		'''
+		Empties scores folder prior to new score images being loaded
+		'''
 		files = glob.glob('scores/*')
 		for f in files:
 			os.remove(f)
@@ -389,8 +424,7 @@ __{team['team']}__
 		options.add_argument('--no_sandbox')
 		options.add_argument('--disable-extensions')
 		options.binary_location = '/usr/bin/chromium-browser'
-		# Deprecated version of creating the driver. This is the preferred approach, but does not work with 32-bit linux OS's
+		# Replace the ChromeDriverManager object with an absolute path to your chromedriver if you have one already
 		driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(),options=options)
-		#driver = webdriver.Chrome('/usr/bin/chromium.chromedriver', options=options)
 		
 		return driver

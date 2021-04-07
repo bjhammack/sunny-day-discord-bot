@@ -1,10 +1,10 @@
 from baseball_spider import Spider
-#from daemonize import Daemonize
+from daemonize import Daemonize
 import datetime as dt
 import discord
 from discord.ext import commands, tasks
 from dotenv import load_dotenv
-#from functools import partial
+from functools import partial
 import glob
 import logging
 import os
@@ -205,7 +205,7 @@ def prep_logger():
 
 if __name__ == '__main__':
     logger, keep_fds = prep_logger()
-    main(logger)
-    #pid = '/tmp/sunny_day_botd.pid'
-    #daemon = Daemonize(app='sunny_day_botd', pid=pid, action=partial(main, logger=logger), keep_fds=keep_fds)
-    #daemon.start()
+    #main(logger)
+    pid = '/tmp/sunny_day_botd.pid'
+    daemon = Daemonize(app='sunny_day_botd', pid=pid, action=partial(main, logger=logger), keep_fds=keep_fds)
+    daemon.start()
