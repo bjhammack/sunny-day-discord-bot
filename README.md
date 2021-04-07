@@ -6,13 +6,13 @@ This bot has three primary functionalities: retrieving scores, lineups, and home
 
 ### Scores
 To retrieve all scores for the current day, use the command `>scores`. This will post an image for each matchup today.
-![Scores Example](https://github.com/bjhammack/sunny-day-discord-bot/blob/main/scores/example_score.png)
+![Scores Example](https://github.com/bjhammack/sunny-day-discord-bot/blob/main/scores/example_score.png){width=250 height=300}
 
 To retrieve the score for a single team for the current day, use the command `>score {team's 3-letter abbreviation}`. This will post a single image of that team's matchup, if they have a matchup for today.
 
 ### Lineups
 To retrieve all lineups for the current day, use the command `>lineups`. This will post an image for each matchup's lineups today.
-![Lineups Example](https://github.com/bjhammack/sunny-day-discord-bot/blob/main/lineups/example_lineup.png)
+![Lineups Example](https://github.com/bjhammack/sunny-day-discord-bot/blob/main/lineups/example_lineup.png){width=250 height=300}
 
 To retrieve the lineup for a single team for the current day, use the command `>lineup {team's 3-letter abbreviation}`. This will post a single image of that team's lineup, if they have a game for today.
 ![Lineup Example](https://github.com/bjhammack/sunny-day-discord-bot/blob/main/lineups/team_example_lineup.png)
