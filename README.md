@@ -44,7 +44,7 @@ You will need to create a .env file in your working directory. This file needs t
 ### requirements.txt
 Be sure to install all libraries in requirements.txt via `pip install -r requirements.txt`
 
-## Runing the Bot
+## Running the Bot
 To run the bot simply type `python bot.py` while in the working directory of this project. If all the steps were properly followed in the setup section, you should see the bot connect to the webdriver and then begin waiting.
 
 ### Logs
