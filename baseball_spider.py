@@ -397,14 +397,14 @@ __{team['team']}__
 		'''
 		Empties lineups folder prior to new lineups being loaded.
 		'''
-		files = glob.glob('lineups/*')
+		files = glob.glob(r'lineups/*')
 		for f in files:
 			os.remove(f)
 	def _empty_scores(self):
 		'''
 		Empties scores folder prior to new score images being loaded
 		'''
-		files = glob.glob('scores/*')
+		files = glob.glob(r'scores/*')
 		for f in files:
 			os.remove(f)
 
@@ -414,7 +414,6 @@ __{team['team']}__
 
 		Returns: selenium driver for webscraping
 		'''
-		#options = webdriver.ChromeOptions()
 		options = webdriver.chrome.options.Options()
 		#options.add_argument('--ignore-certificate-errors')
 		#options.add_argument('--incognito')
@@ -424,7 +423,7 @@ __{team['team']}__
 		options.add_argument('--no-sandbox')
 		options.add_argument('--disable-extensions')
 		options.add_argument('--disable-software-rasterizer')
-		#options.binary_location = '/usr/bin/chromium-browser'
+
 		# Replace the ChromeDriverManager object with an absolute path to your chromedriver if you have one already
 		driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(),options=options)
 		
