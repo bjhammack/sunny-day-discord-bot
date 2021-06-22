@@ -34,7 +34,7 @@ def main(logger):
             logger.info('Lineups retrieved.')
 
             logger.info('Sending message(s).')
-            messages = [await ctx.send(file=discord.File(file)) for file in glob.iglob(r'lineups\*.png')]
+            messages = [await ctx.send(file=discord.File(file)) for file in glob.iglob(r'lineups/*.png')]
         except:
             error = traceback.format_exc()
             logger.error(error)
@@ -76,7 +76,7 @@ def main(logger):
                     logger.info('Lineups scheduled retrieved.')
 
                     logger.info('Sending message(s).')
-                    messages = [await channel.send(file=discord.File(file)) for file in glob.iglob(r'lineups\*.png')]
+                    messages = [await channel.send(file=discord.File(file)) for file in glob.iglob(r'lineups/*.png')]
                     await notification_channel.send('Lineups update in #sunny-day')
         except:
             error = traceback.format_exc()
@@ -98,7 +98,7 @@ def main(logger):
                     logger.info('Scheduled scores retrieved.')
 
                     logger.info('Sending message(s).')
-                    messages = [await channel.send(file=discord.File(file)) for file in glob.iglob(r'scores\*.png')]
+                    messages = [await channel.send(file=discord.File(file)) for file in glob.iglob(r'scores/*.png')]
                     await notification_channel.send('Scores update in #sunny-day')
         except:
             error = traceback.format_exc()
@@ -115,7 +115,7 @@ def main(logger):
             logger.info('Scores retrieved.')
 
             logger.info('Sending message(s).')
-            messages = [await ctx.send(file=discord.File(file)) for file in glob.iglob(r'scores\*.png')]
+            messages = [await ctx.send(file=discord.File(file)) for file in glob.iglob(r'scores/*.png')]
         except:
             error = traceback.format_exc()
             logger.error(error)
@@ -132,7 +132,7 @@ def main(logger):
             logger.info(f'Score retrieved for {team}.')
 
             logger.info('Sending message(s).')
-            messages = [await ctx.send(file=discord.File(file)) for file in glob.iglob(r'scores\*.png')]
+            messages = [await ctx.send(file=discord.File(file)) for file in glob.iglob(r'scores/*.png')]
         except:
             error = traceback.format_exc()
             logger.error(error)
