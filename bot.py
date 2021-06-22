@@ -1,5 +1,4 @@
 from baseball_spider import Spider
-from daemonize import Daemonize
 import datetime as dt
 import discord
 from discord.ext import commands, tasks

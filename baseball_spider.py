@@ -419,10 +419,11 @@ __{team['team']}__
 		#options.add_argument('--ignore-certificate-errors')
 		#options.add_argument('--incognito')
 		options.add_argument('--headless')
-		options.add_argument("--log-level=3")
-		#options.add_argument("--remote-debugging-port=9222")
+		options.add_argument('--log-level=3')
+		options.add_argument('--disable-gpu')
 		options.add_argument('--no-sandbox')
 		options.add_argument('--disable-extensions')
+		options.add_argument('--disable-software-rasterizer')
 		#options.binary_location = '/usr/bin/chromium-browser'
 		# Replace the ChromeDriverManager object with an absolute path to your chromedriver if you have one already
 		driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(),options=options)
