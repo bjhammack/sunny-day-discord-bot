@@ -27,6 +27,7 @@ class Spider:
 		'''
 		Webscrapes the lineups for a specified date; returns a list of dictionaries
 		'''
+		self.driver = self._prep_driver()
 		self._update_today()
 		if not date:
 			date = self.today
@@ -78,6 +79,7 @@ class Spider:
 		'''
 		Gathers all lineups then returns the one with the correct corresponding team name
 		'''
+		self.driver = self._prep_driver()
 		matchups = self.get_lineups()
 
 		team = {}
@@ -130,6 +132,7 @@ __{team['team']}__
 		'''
 		bad_text = bsv.get_scores_bad_text + [v for k,v in self.team_abbrevs.items() if v != 'PIT']
 		
+		self.driver = self._prep_driver()
 		self._update_today()
 		if not date:
 			date = self.today
@@ -350,6 +353,7 @@ __{team['team']}__
 		'''
 		Gets 5 most recent home runs, IDs which ones havent been posted yet, then returns list of strings of new homers.
 		'''
+		self.driver = self._prep_driver()
 		self.driver.get('https://twitter.com/DingerTracker')
 		time.sleep(5)
 		spans = self.driver.find_elements_by_tag_name('span')
